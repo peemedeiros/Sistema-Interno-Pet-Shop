@@ -130,6 +130,16 @@ if(!isset($_SESSION)){
         </a>
     
     </div>
+
+    <div class="menu-item texto-branco">
+        <a href="home.php" class="texto-branco">
+            ANIVESÁRIANTES
+            <div class=" icones-holder">
+                <img src="icon/gift.png" alt="gift" class="iconesMenu">
+            </div>
+        </a>
+    
+    </div>
 </div>
 
 

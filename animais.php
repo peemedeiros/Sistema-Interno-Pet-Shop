@@ -14,6 +14,35 @@
         <title>SIAP</title>
         <script src="js/jquery.js"></script>
         <script src="painel-produtos/js/toggle-menu.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#infoAnimal').click(function(){
+                    $('#modalAnimal').css({
+                        visibility:'visible',
+                        opacity:'1',
+                    });
+                });
+                $('#close-animal-modal').click(function(){
+                    $('#modalAnimal').css({
+                        visibility:'hidden',
+                        opacity:'0',
+                    });
+                });
+            });
+            function visualizarAnimal(id){
+                $.ajax({
+                    type:"POST",
+                    url:"modalAnimal.php",
+                    data:{
+                        modo:"visualizar",
+                        id:id,
+                    },
+                    success: function(dados){
+                        $('.infoAnimalcontainer').html(dados);
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <div class="pagina-inicial">
@@ -29,6 +58,12 @@
                         <p>(11)95881 - 9879</p>
                     </div>
                 </div>       
+            </div>
+            <div id="modalAnimal">
+                <img src="icon/cancel.png" alt="close" id="close-animal-modal">
+                <div class="infoAnimalcontainer center">
+
+                </div>
             </div>
             <div class="container">
                 <?php
@@ -168,12 +203,9 @@
                         </div>
                         
                         <div class="tabela-coluna texto-center">
-                            <a onclick="return confirm('tem certeza que deseja deletar esse registro?'); " href="bd/deletar.php?modo=deletaranimal&id=<?=$rsConsulta['id']?>">
-                                <img src="./icon/cancel.png" alt="delete">
-                            </a>
-                            <a href="">
-                                <img src="./icon/lupa.png" alt="editar">
-                            </a>
+                        
+                            <img id="infoAnimal" onclick="visualizarAnimal(id);"  src="./icon/lupa.png" alt="editar">
+                            
                         </div>
                     </div>
                     <?php

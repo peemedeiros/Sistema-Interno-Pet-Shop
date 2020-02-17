@@ -6,7 +6,7 @@
 
         $user = (string) "root"; //usuario para conexão com o banco de dados
 
-        $password = (string) ""; //senha para conexão com o banco de dados
+        $password = (string) "bcd127"; //senha para conexão com o banco de dados
 
         $database = (string) "augustospet"; //nome do database
 

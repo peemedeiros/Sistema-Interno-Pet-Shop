@@ -46,15 +46,15 @@ function inserirFornecedor ( $tabela, $nome, $cnpj, $tel ){
     }
 }
 //Função para cadastrar Clientes
-function inserirCliente( $nome, $cpf, $telefone, $celular, $email, $sexo, $cep, $logradouro, $bairro, $cidade, $estado, $numero, $avatar ){
+function inserirCliente( $nome, $cpf, $telefone, $celular, $data_nascimento, $email, $sexo, $cep, $logradouro, $bairro, $cidade, $estado, $numero, $complemento, $avatar ){
     require_once('conexao.php');
     $conexao = conexaoMysql();
 
     $sql = "insert into clientes 
-            (nome, cpf, telefone, celular, email, sexo, cep, logradouro, bairro, cidade, estado, numero, avatar)
+            (nome, cpf, telefone, celular, data_nascimento, email, sexo, cep, logradouro, bairro, cidade, estado, numero, complemento, avatar)
             values
-            ('".$nome."' , '".$cpf."','".$telefone."','".$celular."', '".$email."','".$sexo."','".$cep."',
-            '".$logradouro."','".$bairro."','".$cidade."','".$estado."','".$numero."','".$avatar."')";
+            ('".$nome."' , '".$cpf."','".$telefone."','".$celular."','".$data_nascimento."', '".$email."','".$sexo."','".$cep."',
+            '".$logradouro."','".$bairro."','".$cidade."','".$estado."','".$numero."', '".$complemento."', '".$avatar."')";
     
     if($insere = mysqli_query($conexao, $sql)){
         return $insere;

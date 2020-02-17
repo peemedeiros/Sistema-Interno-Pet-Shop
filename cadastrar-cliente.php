@@ -11,6 +11,7 @@ $nome = (String)"";
 $cpf = (String)"";
 $telefone = (String)"";
 $celular = (String)"";
+$data_nascimento = (String)"";
 $email = (String)"";
 
 $cep = (String)"";
@@ -19,6 +20,7 @@ $bairro = (String)"";
 $cidade = (String)"";
 $estado = (String)"";
 $numero = (String)"";
+$complemento = (String)"";
 
 
 
@@ -38,6 +40,10 @@ if(isset($_GET['modo'])){
             $cpf = $rsConsulta['cpf'];
             $telefone = $rsConsulta['telefone'];
             $celular = $rsConsulta['celular'];
+
+            $data_nascimento = explode("-", $rsConsulta['data_nascimento']);
+            $data_nascimento = $data_nascimento[2]."/".$data_nascimento[1];
+            
             $email = $rsConsulta['email'];
 
             $sexo = $rsConsulta['sexo'];
@@ -54,6 +60,7 @@ if(isset($_GET['modo'])){
             $cidade = $rsConsulta['cidade'];
             $estado = $rsConsulta['estado'];
             $numero = $rsConsulta['numero'];
+            $complemento =$rsConsulta['complemento'];
 
             $botao = "EDITAR";
         }   
@@ -116,6 +123,13 @@ if(isset($_GET['modo'])){
 
                         <div class="text-input">
                             <h6>
+                                Aniversário
+                            </h6>
+                            <input type="text" onkeypress="return mascaraAniversario(this, event)" name="txt-cliente-nascimento" value="<?=$data_nascimento?>" class="input-cliente" id="aniversario">
+                        </div>
+
+                        <div class="text-input">
+                            <h6>
                                 INSTAGRAM
                             </h6>
                             <input type="text" placeholder="@exemplo" name="txt-cliente-email" value="<?=$email?>" class="input-cliente">
@@ -156,11 +170,22 @@ if(isset($_GET['modo'])){
 
                         <div class="text-input-row bg-unset w100 flex-justify-content-center">
                             <div class="coluna-txt-input">
-                                numero
+                                Numero
                             </div>
 
                             <div class="coluna-txt-input">
                             <input type="text" name="txt-cliente-numero" onkeypress="return validarEntrada(event,'string');" value="<?=$numero?>" class="input-cliente-rua">    
+                            </div>
+                            
+                        </div>
+
+                        <div class="text-input-row bg-unset w100 flex-justify-content-center">
+                            
+                            <div class="coluna-txt-input small-txt">
+                                Complemento
+                            </div>
+                            <div class="coluna-txt-input">
+                                <input type="text" name="txt-cliente-complemento" value="<?=$complemento?>" class="input-cliente-rua" id="complemento" placeholder="Ex. Apto 123 - bloco 2">
                             </div>
                             
                         </div>

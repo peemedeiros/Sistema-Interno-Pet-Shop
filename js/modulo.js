@@ -99,3 +99,21 @@ function mascaraUf(obj,caracter){
         document.getElementById(id).value = resultado;
 	}
 }
+function mascaraAniversario(obj,caracter){
+    var input = obj.value;
+	var id = obj.id;
+	var aniversario = obj.name;
+	var resultado = input;
+	
+    if(validarEntrada(caracter, "string") == false){
+        return false;
+    }else if(aniversario == "txt-cliente-nascimento"){
+		
+		if(input.length == 2){
+            resultado += "/";
+        }else if(input.length == 5){
+            return false;
+        }
+        document.getElementById(id).value = resultado;
+	}
+}

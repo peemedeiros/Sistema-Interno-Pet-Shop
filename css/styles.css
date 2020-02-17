@@ -589,9 +589,11 @@ a{
     text-decoration: none;
 }
 .tabela-coluna img {
-    width: inherit;
-    height: inherit;
-
+    width: 25px;
+    height: 25px;
+}
+.tabela-coluna img:hover{
+    cursor: pointer;
 }
 .center{
     margin-right: auto ;
@@ -1240,6 +1242,9 @@ label#thumbnail input{
 .input-produto{
     width: 200px;
 }
+.small-txt{
+    font-size: 13px !important;
+}
 .adicionar-produtos{
     width: 100%;
     height: 100%;
@@ -1643,6 +1648,11 @@ label#thumbnail input{
     height: 22px;
     border-radius: 4px;
 }
+.modal-animal-nome{
+    width: 100%;
+    height: 40px;
+    background-color: wheat;
+}
 .coluna{
     width: 170px;
     height: 100%;
@@ -1950,6 +1960,41 @@ label#thumbnail input{
 .container-modal-compra{
     width: 1000px;
     margin: auto;
+}
+#modalAnimal{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.356);
+    position:fixed;
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms;
+}
+#modalAnimal img{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 100px;
+    top:100px;
+    cursor: pointer;
+}
+.infoAnimalcontainer{
+    width: 1200px;
+}
+.animal-ficha{
+    width: 450px;
+    height: 500px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding-top: 20px;
+    position:relative;
+    top:60px;
+}
+.modal-animal-coluna{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 .linha-modal{
     width: 100%;
