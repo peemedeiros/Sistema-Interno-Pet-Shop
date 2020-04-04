@@ -102,7 +102,15 @@
                     });
                     $('.ativar').removeAttr('required');
                 });
-                
+                var count = 0;
+                $('#confirmButton').click(function (){
+                    count ++;
+                    if(count > 1){
+                        $(this).css('pointer-events', 'none');
+                        $(this).css({'cursor':'no-drop'});
+                        return false;
+                    }
+                })
             });
         </script>
     </head>
@@ -122,7 +130,7 @@
                     </div>
                     
                 </div>
-                <form action="<?=$action?>" method="POST" class="cadastrar-ordem-servico">
+                <form action="<?=$action?>" method="POST" class="cadastrar-ordem-servico" id="formOS">
                     <div class="linha-tabela-orderm">
                         <div class="coluna-tabela-ordem-nome">
                             Animal
@@ -204,8 +212,8 @@
                             Solicitar retorno via Taxi Dog
                         </div>
                         <div class="coluna-tabela-ordem">
-                            Sim<input type="radio" value="1" name="rdoTaxiDog" id="transporteSim">
-                            Não<input type="radio" value="0" name="rdoTaxiDog" id="transporteNao">
+                            Sim<input type="radio" value="1" name="rdoTaxiDog" id="transporteSim" required>
+                            Não<input type="radio" value="0" name="rdoTaxiDog" id="transporteNao" required>
                         </div>
                     </div>
                     <div id="endereco-os">
@@ -230,7 +238,7 @@
                                 Numero
                             </div>
                             <div class="coluna-endereco-os flex-justify-start">
-                                <input type="text" name="txt-numero-ordem" onkeypress="return validarEntrada(event,'numeric');" value="<?=$numero?>" class="ativar larguraMini border-radius-pequena">
+                                <input type="text" name="txt-numero-ordem" onkeypress="return validarEntrada(event,'string');" value="<?=$numero?>" class="ativar larguraMini border-radius-pequena">
                             </div>
                         </div>
                         <div class="linha-endereco-os">
@@ -275,7 +283,7 @@
 
                     <?php
                     
-                        $sqlServicos = "SELECT * FROM servicos";
+                        $sqlServicos = "SELECT * FROM servicos WHERE ativado = 1";
 
                         $selectServicos = mysqli_query($conexao, $sqlServicos);
 
@@ -317,8 +325,12 @@
 
 
                     <div class="linha-tabela-servicos">
-                        <button type="submit" name="btn-cadastrar-ordem" class="botao center">
+                        <button id="confirmButton" type="submit" name="btn-cadastrar-ordem" class="botao center">
+                            
                             CONFIRMAR
+                            <div class='buttonActionCancel'> 
+                            
+                            </div>
                         </button>
                     </div>  
                 </form>

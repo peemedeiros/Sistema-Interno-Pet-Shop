@@ -31,8 +31,14 @@
             $cidade = $_POST['txt-cidade-ordem'];
             $uf = $_POST['txt-uf-ordem'];
 
-            $valor_transporte = explode(",", $_POST['txt-valor-transporte']);
-            $valor_transporte = $valor_transporte[0].".".$valor_transporte[1];
+            if(isset($valor_transporte)){
+                $valor_transporte = explode(",", $_POST['txt-valor-transporte']);
+                $valor_transporte = $valor_transporte[0].".".$valor_transporte[1];
+            }else{
+                $valor_transporte = explode(",", $_POST['txt-valor-transporte']);
+                $valor_transporte = $valor_transporte[0].".".$valor_transporte[1];
+            }
+            
 
             //Tenho que criar a situacao de pagamento, pois se o cliente decidir deixar o servico 
             //pago os usuarios consiguirao visualizar que o servico ja foi pago com antecedencia
@@ -126,8 +132,7 @@
                         echo($deleteSql);
                     }
                 }else{
-                    echo('erro');
-                    echo($sqlServicoOrdem);
+                    echo("<h1> SELECIONE AO MENOS UM SERVIÇO</h1>");
 
                     if(!empty($_POST['checklist'])){
 

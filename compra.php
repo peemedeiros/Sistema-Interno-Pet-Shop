@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div class="resumo-pedido">
-                            <button type="submit" class="botao">
+                            <button type="button" class="botao">
                                <a href="bd/realizarcompra.php?carrinho=<?=$_GET['carrinho']?>&idcliente=<?=$idcliente?>">
                                     COMPRAR
                                </a> 

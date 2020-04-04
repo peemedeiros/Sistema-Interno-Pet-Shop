@@ -52,7 +52,7 @@ require_once('modulos/verificar-status.php');
 
             $id = $_POST['id'];
 
-            $sql = "SELECT * FROM servicos";
+            $sql = "SELECT * FROM servicos WHERE id =".$id;
 
             $select = mysqli_query($conexao, $sql);
 
@@ -114,11 +114,21 @@ require_once('modulos/verificar-status.php');
             <h2>
                 PREÇO: R$ <?=$preco?>
             </h2>
+
+            <?php
+                if(strtoupper($_POST['modo']) == 'VISUALIZAR')
+                {
+            ?>
+
             <h2>
                 PREÇO DE COMPRA R$ <?=$precoCompra?>
             </h2>
+            <?php
+                }
+            ?>
             <h2>
-                CATEGORIA: <?=$categoria?>
+                CATEGORIA: <?=$categoria?> <?php if(strtoupper($_POST['modo']) == 'VISUALIZAR-SERVICO') echo("SERVICOS") ?>
+
             </h2>
             <h2>
                 FORNECEDOR: <?=$fornecedor?>

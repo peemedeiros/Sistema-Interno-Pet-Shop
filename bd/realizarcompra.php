@@ -68,6 +68,20 @@ $idCarrinho = $_GET['carrinho'];
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../css/styles.css">
         <title>Augusto's Pet</title>
+        <script src="../js/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#confirmButton').click(function (){
+                    count ++;
+                    if(count > 1){
+                        $(this).css('pointer-events', 'none');
+                        $(this).css({'cursor':'no-drop'});
+                        return false;
+                    }
+                })
+            })
+            
+        </script>
     </head>
     <body>
         <div class="pagina-inicial-compra">
@@ -168,7 +182,7 @@ $idCarrinho = $_GET['carrinho'];
                                 VOLTAR
                             </a>
                         </button>
-                        <input type="submit" value="CONFIRMAR" name="btn-cadastrar-compra" class="botao texto-center">
+                        <input id="confirmButton" type="submit" value="CONFIRMAR" name="btn-cadastrar-compra" class="botao texto-center">
                     </div>
                     
                 </form>

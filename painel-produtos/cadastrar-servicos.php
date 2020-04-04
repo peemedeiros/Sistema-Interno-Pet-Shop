@@ -11,7 +11,7 @@ $botao = (String)"CADASTRAR";
 
 if(isset($_GET['modo'])){
     if(strtoupper($_GET['modo']) == 'EDITAR'){
-        session_start();
+        // session_start();
         
         $id = $_GET['id'];
 

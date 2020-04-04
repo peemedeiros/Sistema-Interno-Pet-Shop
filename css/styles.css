@@ -39,6 +39,9 @@ a{
     background-image:linear-gradient(#a2f0ff, #25b7d3);
     display: none;
 }
+
+    
+
 .ordem-de-servico-aberta{
     background-color: rgb(248, 225, 160) !important;
 }
@@ -712,7 +715,7 @@ a{
 }
 
 .pagina-inicial-compra{
-    height: 100vh;
+    height: 105vh;
     justify-content: center;
     min-height: unset;
     
@@ -2233,6 +2236,27 @@ color:#000;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.coluna-servicos-escolhidos .botao a{
+    width: inherit;
+    height: inherit;
+    display: block;
+    box-sizing: border-box;
+    padding-top: 14px;
+}
+.resumo-pedido a {
+    width: inherit;
+    height: inherit;
+    display: block;
+    box-sizing: border-box;
+    padding-top: 14px;
+}
+.main-compra .linha .botao a{
+    width: inherit;
+    height: inherit;
+    display: block;
+    box-sizing: border-box;
+    padding-top: 14px;
 }
 .step img {
     width: 50px;
