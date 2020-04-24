@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `augustospet` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `augustospet`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: augustospet
@@ -40,7 +38,7 @@ CREATE TABLE `animais` (
   PRIMARY KEY (`id`),
   KEY `fkdono_idx` (`id_dono`),
   CONSTRAINT `fkdono` FOREIGN KEY (`id_dono`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +47,7 @@ CREATE TABLE `animais` (
 
 LOCK TABLES `animais` WRITE;
 /*!40000 ALTER TABLE `animais` DISABLE KEYS */;
+INSERT INTO `animais` VALUES (9,'Jorel',2,2,2,2,2,2,NULL,'Fernando','(11)40028922',1),(10,'Spin',1,2,1,2,2,2,2,NULL,NULL,1);
 /*!40000 ALTER TABLE `animais` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,6 +74,7 @@ CREATE TABLE `animal_doenca` (
 
 LOCK TABLES `animal_doenca` WRITE;
 /*!40000 ALTER TABLE `animal_doenca` DISABLE KEYS */;
+INSERT INTO `animal_doenca` VALUES (10,2);
 /*!40000 ALTER TABLE `animal_doenca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,6 +103,7 @@ CREATE TABLE `carrinho_produto` (
 
 LOCK TABLES `carrinho_produto` WRITE;
 /*!40000 ALTER TABLE `carrinho_produto` DISABLE KEYS */;
+INSERT INTO `carrinho_produto` VALUES (2,4,1,20.00);
 /*!40000 ALTER TABLE `carrinho_produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +148,7 @@ CREATE TABLE `carrinho_temporario` (
   PRIMARY KEY (`id`),
   KEY `fkcliente_idx` (`id_cliente`),
   CONSTRAINT `fkclientecompra` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +157,7 @@ CREATE TABLE `carrinho_temporario` (
 
 LOCK TABLES `carrinho_temporario` WRITE;
 /*!40000 ALTER TABLE `carrinho_temporario` DISABLE KEYS */;
+INSERT INTO `carrinho_temporario` VALUES (3,2,0.00),(4,2,0.00);
 /*!40000 ALTER TABLE `carrinho_temporario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +173,7 @@ CREATE TABLE `categoria` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,6 +182,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+INSERT INTO `categoria` VALUES (2,'Shampoo',1);
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,6 +199,7 @@ CREATE TABLE `clientes` (
   `cpf` varchar(25) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `celular` varchar(20) NOT NULL,
+  `data_nascimento` date DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `sexo` varchar(1) DEFAULT NULL,
   `cep` varchar(20) NOT NULL,
@@ -204,9 +208,10 @@ CREATE TABLE `clientes` (
   `cidade` varchar(80) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `numero` varchar(45) NOT NULL,
+  `complemento` varchar(70) DEFAULT NULL,
   `avatar` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +220,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Nicolas Santos','','','11952185975','nicolas.nicc21@gmail.com','M','06622670','Rua Maíra','Jardim Camila','Jandira','SP','50','man6.png'),(2,'Pedro Medeiros','','','(11)958819879','@peemedeiros','M','06622-330','Rua Embu','Parque Santa Tereza','Jandira','SP','37','man3.png');
+INSERT INTO `clientes` VALUES (1,'Nicolas Santos','','','11952185975',NULL,'nicolas.nicc21@gmail.com','M','06622670','Rua Maíra','Jardim Camila','Jandira','SP','50',NULL,'man6.png'),(2,'Pedro Medeiros','','','(11)958819879','2020-02-03','@peemedeiros','M','06622-330','Rua Embu','Parque Santa Tereza','Jandira','SP','37','','man3.png'),(7,'Gecilene','','','(11)971212674','1971-02-16','','F','06622330','Rua Embu','Parque Santa Tereza','Jandira','SP','36','Apto 133 - Bloco A','woman6.png'),(8,'Bruno','','','(11)40028922','2020-02-07','@bruno','M','06622330','Rua Embu','Parque Santa Tereza','Jandira','SP','12','','man6.png');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +318,7 @@ CREATE TABLE `cor_predominante` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,6 +327,7 @@ CREATE TABLE `cor_predominante` (
 
 LOCK TABLES `cor_predominante` WRITE;
 /*!40000 ALTER TABLE `cor_predominante` DISABLE KEYS */;
+INSERT INTO `cor_predominante` VALUES (2,'#000000',1);
 /*!40000 ALTER TABLE `cor_predominante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +343,7 @@ CREATE TABLE `doencas` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,6 +352,7 @@ CREATE TABLE `doencas` (
 
 LOCK TABLES `doencas` WRITE;
 /*!40000 ALTER TABLE `doencas` DISABLE KEYS */;
+INSERT INTO `doencas` VALUES (2,'Léptospirose',1);
 /*!40000 ALTER TABLE `doencas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,7 +368,7 @@ CREATE TABLE `especies` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,6 +377,7 @@ CREATE TABLE `especies` (
 
 LOCK TABLES `especies` WRITE;
 /*!40000 ALTER TABLE `especies` DISABLE KEYS */;
+INSERT INTO `especies` VALUES (2,'Cachorro',1);
 /*!40000 ALTER TABLE `especies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +417,7 @@ CREATE TABLE `fornecedores` (
   `cnpj` varchar(45) NOT NULL,
   `telefone` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,6 +426,7 @@ CREATE TABLE `fornecedores` (
 
 LOCK TABLES `fornecedores` WRITE;
 /*!40000 ALTER TABLE `fornecedores` DISABLE KEYS */;
+INSERT INTO `fornecedores` VALUES (2,'PetZ','84937176000164','40020022');
 /*!40000 ALTER TABLE `fornecedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,7 +465,7 @@ CREATE TABLE `ordem_servico` (
   CONSTRAINT `fkanimal-orderm` FOREIGN KEY (`id_animal`) REFERENCES `animais` (`id`),
   CONSTRAINT `fkcliente-ordem` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
   CONSTRAINT `fkpagamento-ordem` FOREIGN KEY (`id_formapagamento`) REFERENCES `forma_pagamento` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,6 +474,7 @@ CREATE TABLE `ordem_servico` (
 
 LOCK TABLES `ordem_servico` WRITE;
 /*!40000 ALTER TABLE `ordem_servico` DISABLE KEYS */;
+INSERT INTO `ordem_servico` VALUES (15,NULL,9,NULL,'Fernando','(11)40028922','2020-02-14','22:56:59','',0,'A',0,35.00,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(16,2,10,NULL,'Pedro Medeiros','(11)958819879','2020-04-04','12:15:58','',0,'A',0,35.00,'37','Rua Embu','06622-330','Parque Santa Tereza','Jandira','SP',10.00),(17,2,10,NULL,'Pedro Medeiros','(11)958819879','2020-04-04','12:52:44','teste',0,'A',0,10.00,'37','Rua Embu','06622-330','Parque Santa Tereza','Jandira','SP',10.00),(18,2,10,NULL,'Pedro Medeiros','(11)958819879','2020-04-04','13:08:06','',0,'A',0,10.00,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(19,2,10,NULL,'Pedro Medeiros','(11)958819879','2020-04-04','13:09:51','',1,'A',0,45.00,'37','Rua Embu','06622-330','Parque Santa Tereza','Jandira','SP',10.00),(20,2,10,NULL,'Pedro Medeiros','(11)958819879','2020-04-04','13:15:44','',1,'A',0,45.00,'37','Rua Embu','06622-330','Parque Santa Tereza','Jandira','SP',10.00);
 /*!40000 ALTER TABLE `ordem_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,6 +501,7 @@ CREATE TABLE `ordem_servico_servico` (
 
 LOCK TABLES `ordem_servico_servico` WRITE;
 /*!40000 ALTER TABLE `ordem_servico_servico` DISABLE KEYS */;
+INSERT INTO `ordem_servico_servico` VALUES (15,1),(16,3),(17,2),(18,2),(19,1),(20,1);
 /*!40000 ALTER TABLE `ordem_servico_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,7 +517,7 @@ CREATE TABLE `porte` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -515,6 +526,7 @@ CREATE TABLE `porte` (
 
 LOCK TABLES `porte` WRITE;
 /*!40000 ALTER TABLE `porte` DISABLE KEYS */;
+INSERT INTO `porte` VALUES (2,'Grande',1);
 /*!40000 ALTER TABLE `porte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -541,7 +553,7 @@ CREATE TABLE `produtos` (
   KEY `fkfornecedor_idx` (`id_fornecedor`),
   CONSTRAINT `fkcategoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`),
   CONSTRAINT `fkprodutoFornecedor` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -550,6 +562,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (2,'Shampoo',20.00,5.59,10,'cd3db6389dd7ad5c76590bc83ac5a897.jpg','',1,2,2),(3,'teste1',20.00,10.00,7,'2598a1974a024c71efa8c440f9be9f0d.png','',0,2,2);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -568,7 +581,7 @@ CREATE TABLE `racas` (
   PRIMARY KEY (`id`),
   KEY `fkespecie_idx` (`id_especie`),
   CONSTRAINT `fkespecie` FOREIGN KEY (`id_especie`) REFERENCES `especies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -577,6 +590,7 @@ CREATE TABLE `racas` (
 
 LOCK TABLES `racas` WRITE;
 /*!40000 ALTER TABLE `racas` DISABLE KEYS */;
+INSERT INTO `racas` VALUES (2,'Vira-lata',2,1);
 /*!40000 ALTER TABLE `racas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -594,7 +608,7 @@ CREATE TABLE `servicos` (
   `descricao` text,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -603,7 +617,7 @@ CREATE TABLE `servicos` (
 
 LOCK TABLES `servicos` WRITE;
 /*!40000 ALTER TABLE `servicos` DISABLE KEYS */;
-INSERT INTO `servicos` VALUES (1,'Banho Comum PP',35.00,'Banho para animais de porte pequeno',1);
+INSERT INTO `servicos` VALUES (1,'Banho Comum PP',35.00,'Banho para animais de porte pequeno',1),(2,'teste35',10.00,'teste',1),(3,'teste2',35.00,'teste2',0);
 /*!40000 ALTER TABLE `servicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -619,7 +633,7 @@ CREATE TABLE `temperamentos` (
   `nome` varchar(45) NOT NULL,
   `ativado` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -628,7 +642,7 @@ CREATE TABLE `temperamentos` (
 
 LOCK TABLES `temperamentos` WRITE;
 /*!40000 ALTER TABLE `temperamentos` DISABLE KEYS */;
-INSERT INTO `temperamentos` VALUES (1,'Brincalhão',1);
+INSERT INTO `temperamentos` VALUES (1,'Brincalhão',1),(2,'Bravo',1);
 /*!40000 ALTER TABLE `temperamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,7 +676,7 @@ CREATE TABLE `transporte` (
   KEY `fktransportepagamento_idx` (`id_formapagamento`),
   CONSTRAINT `fktransportecliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
   CONSTRAINT `fktransportepagamento` FOREIGN KEY (`id_formapagamento`) REFERENCES `forma_pagamento` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -671,6 +685,7 @@ CREATE TABLE `transporte` (
 
 LOCK TABLES `transporte` WRITE;
 /*!40000 ALTER TABLE `transporte` DISABLE KEYS */;
+INSERT INTO `transporte` VALUES (7,2,NULL,NULL,NULL,NULL,0.00,0.00,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `transporte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -697,6 +712,7 @@ CREATE TABLE `transporte_animal` (
 
 LOCK TABLES `transporte_animal` WRITE;
 /*!40000 ALTER TABLE `transporte_animal` DISABLE KEYS */;
+INSERT INTO `transporte_animal` VALUES (7,10);
 /*!40000 ALTER TABLE `transporte_animal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -723,6 +739,7 @@ CREATE TABLE `transporte_servico` (
 
 LOCK TABLES `transporte_servico` WRITE;
 /*!40000 ALTER TABLE `transporte_servico` DISABLE KEYS */;
+INSERT INTO `transporte_servico` VALUES (7,1);
 /*!40000 ALTER TABLE `transporte_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -761,4 +778,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-12 23:37:32
+-- Dump completed on 2020-04-20 19:02:24
